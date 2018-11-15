@@ -1,5 +1,6 @@
 require 'sinatra/base'
 require_relative 'lib/player.rb'
+require_relative 'lib/game.rb'
 #require 'shotgun'
 # shotgun app.rb -p 4567 // Once is installed sinatra with: gem install shotgun // run the following command and giving the default port
 class Battle < Sinatra::Base
@@ -23,7 +24,7 @@ class Battle < Sinatra::Base
 	get '/attack' do
 		@player_1 = $player_1
 		@player_2 = $player_2
-		@player_1.attack(@player_2)
+		Game.new.attack(@player_2)
 		erb :attack
 	end
 	run! if app_file == $0
